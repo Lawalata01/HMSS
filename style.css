@@ -177,10 +177,13 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.2vw, 57px); line-height: 1.1; fo
 .membership-form-intro { max-width: 550px; margin: 14px 0 26px; color: #72766d; font-size: 11px; line-height: 1.8; }
 .membership-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
 .membership-fields label { display: grid; gap: 7px; color: var(--ink); font-size: 10px; font-weight: 700; }
-.membership-fields input, .membership-fields textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); background: var(--paper); font: 400 12px var(--sans); }
-.membership-fields input:focus, .membership-fields textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.membership-fields input, .membership-fields select, .membership-fields textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); background: var(--paper); font: 400 12px var(--sans); }
+.membership-fields input:focus, .membership-fields select:focus, .membership-fields textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.membership-fields input[readonly] { color: var(--muted); }
 .membership-fields textarea { resize: vertical; }
 .membership-reason { grid-column: 1 / -1; }
+.membership-form-source { margin: 18px 0 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
+.membership-form-source a { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
 .membership-submit { margin-top: 22px; border: 0; cursor: pointer; }
 
 .contact-section { padding-top: 0; padding-bottom: 107px; }

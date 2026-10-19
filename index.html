@@ -230,11 +230,32 @@
           <label>Nama lengkap
             <input name="nama" type="text" autocomplete="name" required maxlength="100">
           </label>
-          <label>Asal perguruan tinggi
-            <input name="kampus" type="text" autocomplete="organization" required maxlength="120">
+          <label>Universitas
+            <input type="hidden" name="kampus" value="Universitas Nusa Putra Sukabumi">
+            <input type="text" value="Universitas Nusa Putra Sukabumi" readonly>
           </label>
           <label>Program studi
-            <input name="programStudi" type="text" required maxlength="120">
+            <select name="programStudi" required>
+              <option value="" selected disabled>Pilih program studi</option>
+              <optgroup label="Program Sarjana">
+                <option>Akuntansi</option>
+                <option>Desain Komunikasi Visual</option>
+                <option>Hukum</option>
+                <option>Manajemen</option>
+                <option>Pendidikan Guru Sekolah Dasar (PGSD)</option>
+                <option>Sistem Informasi</option>
+                <option>Teknik Elektro</option>
+                <option>Teknik Informatika</option>
+                <option>Teknik Mesin</option>
+                <option>Teknik Sipil</option>
+              </optgroup>
+              <optgroup label="Program Magister">
+                <option>Magister Computer Science</option>
+                <option>Magister Hukum</option>
+                <option>Magister Manajemen</option>
+                <option>Magister Pedagogi</option>
+              </optgroup>
+            </select>
           </label>
           <label>Angkatan
             <input name="angkatan" type="number" inputmode="numeric" min="2000" max="2100" required>
@@ -246,6 +267,7 @@
             <textarea name="alasan" rows="4" maxlength="500" required></textarea>
           </label>
         </div>
+        <p class="membership-form-source">Daftar program studi merujuk pada <a href="https://nusaputra.ac.id/id/akademik/fakultas-engineering-computer-and-design/" target="_blank" rel="noopener noreferrer">FECD</a> dan <a href="https://nusaputra.ac.id/id/akademik/fakultas-bisnis-dan-humaniora/" target="_blank" rel="noopener noreferrer">FBH</a> Universitas Nusa Putra.</p>
         <button class="button button-dark membership-submit" type="submit">Kirim pendaftaran via WhatsApp <span aria-hidden="true">↗</span></button>
       </form>
     </section>
