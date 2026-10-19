@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <circle cx="256" cy="256" r="177" fill="#E8B84A"/>
+  <text x="256" y="278" fill="#123D32" font-family="Arial,sans-serif" font-size="112" font-weight="800" text-anchor="middle" dominant-baseline="middle">HMSS</text>
+  <path d="M256 361v58m-47-29h94" stroke="#123D32" stroke-linecap="round" stroke-width="15"/>
+</svg>
