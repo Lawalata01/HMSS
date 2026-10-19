@@ -114,7 +114,7 @@
         </div>
         <a class="arrow-link desktop-link" href="index.html?page=berita">Semua informasi <span>↗</span></a>
       </div>
-      <div class="news-grid">
+      <div class="news-grid" id="public-news-grid">
         <article class="news-card news-featured">
           <a class="news-image image-community" href="index.html?page=berita" aria-label="Baca informasi penerimaan anggota baru">
             <span class="image-tag">PENGUMUMAN</span><span class="image-arrow">↗</span>
@@ -140,6 +140,7 @@
           <p>Catatan kecil dari perjalanan pengabdian anggota HMSS di Sorong Selatan.</p>
         </article>
       </div>
+      <p class="structure-note" id="public-content-status" role="status"></p>
       <a class="arrow-link mobile-link" href="index.html?page=berita">Semua informasi <span>↗</span></a>
     </section>
 
@@ -151,7 +152,7 @@
         </div>
         <p>Program kerja HMSS dirancang untuk membuka ruang belajar, memperkuat kebersamaan, dan memberi dampak yang terasa.</p>
       </div>
-      <div class="program-list">
+      <div class="program-list" id="public-program-list">
         <article class="program-item">
           <span class="program-number">01</span><div><h3>Ruang Tumbuh</h3><p>Belajar bersama, berbagi keterampilan, dan mengembangkan potensi anggota.</p></div><span class="program-symbol">↗</span>
         </article>
@@ -172,7 +173,7 @@
         <div><div class="section-kicker"><span>05</span> / POTRET KEBERSAMAAN</div><h2>Yang kita <span>kenang.</span></h2></div>
         <a class="arrow-link desktop-link" href="index.html?page=galeri">Lihat cerita lainnya <span>↗</span></a>
       </div>
-      <div class="gallery-grid">
+      <div class="gallery-grid" id="public-gallery-grid">
         <figure class="gallery-photo gallery-one"><figcaption><span>01 / PENGABDIAN</span><strong>Berbagi untuk sesama</strong></figcaption></figure>
         <figure class="gallery-photo gallery-two"><figcaption><span>02 / KEKELUARGAAN</span><strong>Satu cerita, banyak saudara</strong></figcaption></figure>
         <figure class="gallery-photo gallery-three"><figcaption><span>03 / DISKUSI</span><strong>Ruang untuk setiap suara</strong></figcaption></figure>
@@ -194,7 +195,7 @@
       <form class="membership-form" id="form-pendaftaran">
         <div class="section-kicker"><span>FORMULIR</span> / PENDAFTARAN ANGGOTA</div>
         <h2>Mulai perjalanan<br><span>bersama HMSS.</span></h2>
-        <p class="membership-form-intro">Isi data berikut. Setelah menekan tombol kirim, WhatsApp akan terbuka dengan pesan pendaftaran yang siap dikirim ke pengurus.</p>
+        <p class="membership-form-intro">Isi data berikut untuk mengirim pendaftaran ke pengurus HMSS. Informasi akan disimpan agar dapat ditinjau melalui Portal Admin.</p>
         <div class="membership-fields">
           <label>Nama lengkap
             <input name="nama" type="text" autocomplete="name" required maxlength="100">
@@ -237,7 +238,8 @@
           </label>
         </div>
         <p class="membership-form-source">Daftar program studi merujuk pada <a href="https://nusaputra.ac.id/id/akademik/fakultas-engineering-computer-and-design/" target="_blank" rel="noopener noreferrer">FECD</a> dan <a href="https://nusaputra.ac.id/id/akademik/fakultas-bisnis-dan-humaniora/" target="_blank" rel="noopener noreferrer">FBH</a> Universitas Nusa Putra.</p>
-        <button class="button button-dark membership-submit" type="submit">Kirim pendaftaran via WhatsApp <span aria-hidden="true">↗</span></button>
+        <button class="button button-dark membership-submit" type="submit">Kirim pendaftaran <span aria-hidden="true">↗</span></button>
+        <p class="membership-form-status" id="membership-form-status" role="status"></p>
       </form>
     </section>
 
@@ -247,13 +249,23 @@
         <div>
           <h2>Mari mulai<br><span>percakapan.</span></h2>
           <p class="contact-intro">Ada pertanyaan, ide kolaborasi, atau ingin bergabung? Kami senang mendengar ceritamu.</p>
-          <p class="contact-placeholder">Informasi kontak resmi akan ditambahkan di sini.</p>
+          <p class="contact-placeholder">Hubungi kami melalui formulir, email, atau WhatsApp.</p>
         </div>
         <div class="contact-details">
           <div><span>DOMISILI</span><p>Sorong Selatan, Papua Barat Daya</p></div>
+          <div><span>EMAIL HIMPUNAN</span><a href="mailto:himpunanmahasiswasorong%20selatan@gmail.com">himpunanmahasiswasorong selatan@gmail.com</a></div>
+          <div><span>WHATSAPP</span><a href="https://wa.me/6285353663286" target="_blank" rel="noopener noreferrer">0853-5366-3286 ↗</a><a href="https://wa.me/6282189407446" target="_blank" rel="noopener noreferrer">0821-8940-7446 ↗</a></div>
           <div><span>IKUTI PERJALANAN KAMI</span><a href="https://www.instagram.com/himasos_sjb03/" target="_blank" rel="noopener noreferrer">@himasos_sjb03 ↗</a></div>
-          <div><span>INFORMASI</span><p>Hubungi pengurus HMSS untuk informasi terbaru.</p></div>
         </div>
+        <form class="contact-form" id="contact-form">
+          <h3>Kirim pesan</h3>
+          <label>Nama lengkap<input name="name" type="text" autocomplete="name" maxlength="100" required></label>
+          <label>Email<input name="email" type="email" autocomplete="email" maxlength="254"></label>
+          <label>Subjek<input name="subject" type="text" maxlength="180"></label>
+          <label>Pesan<textarea name="message" rows="4" maxlength="3000" required></textarea></label>
+          <button class="button button-dark" type="submit">Kirim pesan <span aria-hidden="true">↗</span></button>
+          <p class="contact-form-status" id="contact-form-status" role="status"></p>
+        </form>
       </div>
     </section>
   </main>
@@ -261,7 +273,7 @@
   <footer class="site-footer">
     <a class="brand footer-brand" href="index.html?page=beranda"><img class="brand-mark" src="logo-hmss.png" alt="Logo HMSS"><span class="brand-name">Himpunan Mahasiswa<br><strong>Sorong Selatan</strong></span></a>
     <p>Merawat kebersamaan, menumbuhkan harapan.</p>
-    <div class="footer-bottom"><span>© HMSS · Konten dan data kontak pada halaman ini merupakan contoh rancangan.</span><a href="admin.html">Portal Admin ↗</a><a href="index.html?page=beranda">Kembali ke beranda ↑</a></div>
+    <div class="footer-bottom"><span>© HMSS · Himpunan Mahasiswa Sorong Selatan.</span><a href="admin.html">Portal Admin ↗</a><a href="index.html?page=beranda">Kembali ke beranda ↑</a></div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -316,9 +328,57 @@
     const publicPeriodYears = document.querySelector('#public-period-years');
     const publicPeriodActive = document.querySelector('#public-period-active');
     let publicPeriods = [];
+    const initialLeadership = [
+      { position_title: 'Ketua Umum', full_name: 'Onesimus Homer', photo_url: 'assets/leadership/onesimus-homer.jpg' },
+      { position_title: 'Wakil Ketua', full_name: 'Titus Srer Aflili', photo_url: 'assets/leadership/titus-srer-aflili.jpg' },
+      { position_title: 'Sekretaris', full_name: 'Arius Tonce Saflesa', photo_url: 'assets/leadership/arius-tonce-saflesa.jpg' },
+      { position_title: 'Bendahara I', full_name: 'Tika M. Bleskadit', photo_url: 'assets/leadership/tika-m-bleskadit.jpg' },
+      { position_title: 'Bendahara II', full_name: 'Monike Malakamen', photo_url: 'assets/leadership/monike-malakamen.jpg' },
+      { position_title: 'Koordinator', full_name: 'Yonatah Safkaur', photo_url: 'assets/leadership/yonatah-safkaur.jpg', department: 'Humas' },
+      { position_title: 'Anggota', full_name: 'Brando S. Thesia', photo_url: 'assets/leadership/brando-s-thesia.jpg', department: 'Humas' },
+      { position_title: 'Anggota', full_name: 'Anna M. Tinopi', photo_url: 'assets/leadership/anna-m-tinopi.jpg', department: 'Humas' },
+      { position_title: 'Anggota', full_name: 'Suhaip H. Tarage', photo_url: 'assets/leadership/suhaip-h-tarage.jpg', department: 'Humas' },
+      { position_title: 'Koordinator', full_name: 'Arnol H. Sama', photo_url: 'assets/leadership/arnol-h-sama.jpg', department: 'Kaderisasi' },
+      { position_title: 'Anggota', full_name: 'Lukas Solosa', photo_url: 'assets/leadership/lukas-solosa.jpg', department: 'Kaderisasi' },
+      { position_title: 'Anggota', full_name: 'Marten Segeit', photo_url: 'assets/leadership/marten-segeit.jpg', department: 'Kaderisasi' },
+      { position_title: 'Anggota', full_name: 'Febrian Kehek', photo_url: 'assets/leadership/febrian-kehek.jpg', department: 'Kaderisasi' },
+      { position_title: 'Koordinator', full_name: 'Thera Y. Tarage', photo_url: 'assets/leadership/thera-y-tarage.jpg', department: 'Minat dan Bakat' },
+      { position_title: 'Anggota', full_name: 'Marlon Sefle', photo_url: 'assets/leadership/marlon-sefle.jpg', department: 'Minat dan Bakat' },
+      { position_title: 'Anggota', full_name: 'Arkilaus W. Segeit', photo_url: 'assets/leadership/arkilaus-w-segeit.jpg', department: 'Minat dan Bakat' },
+      { position_title: 'Anggota', full_name: 'Orlando Tamar', photo_url: 'assets/leadership/orlando-tamar.jpg', department: 'Minat dan Bakat' },
+      { position_title: 'Anggota', full_name: 'Malik Serkadifat', photo_url: 'assets/leadership/malik-serkadifat.jpg', department: 'Minat dan Bakat' },
+      { position_title: 'Koordinator', full_name: 'Gresela Iek', photo_url: 'assets/leadership/gresela-iek.jpg', department: 'Keagamaan' },
+      { position_title: 'Anggota', full_name: 'Aleta Brinje', photo_url: 'assets/leadership/aleta-brinje.jpg', department: 'Keagamaan' },
+      { position_title: 'Anggota', full_name: 'Roi G. Saflesa', photo_url: 'assets/leadership/roi-g-saflesa.jpg', department: 'Keagamaan' },
+      { position_title: 'Anggota', full_name: 'Tasman Jare', photo_url: 'assets/leadership/tasman-jare.jpg', department: 'Keagamaan' },
+      { position_title: 'Anggota', full_name: 'Kamaludin Wugaje', photo_url: 'assets/leadership/kamaludin-wugaje.jpg', department: 'Keagamaan' },
+      { position_title: 'Anggota', full_name: 'Elisabeth M. Blesia', photo_url: 'assets/leadership/elisabeth-m-blesia.jpg', department: 'Keagamaan' },
+      { position_title: 'Koordinator', full_name: 'Sembros S. Kolinggea', photo_url: 'assets/leadership/sembros-s-kolinggea.jpg', department: 'Dana dan Usaha' },
+      { position_title: 'Anggota', full_name: 'Natalius Kaliele', photo_url: 'assets/leadership/natalius-kaliele.jpg', department: 'Dana dan Usaha' },
+      { position_title: 'Anggota', full_name: 'Geisler Wambrauw', photo_url: 'assets/leadership/geisler-wambrauw.jpg', department: 'Dana dan Usaha' },
+      { position_title: 'Anggota', full_name: 'Petronela Saflembolo', photo_url: 'assets/leadership/petronela-saflembolo.jpg', department: 'Dana dan Usaha' },
+      { position_title: 'Koordinator', full_name: 'Marice N. Aibekop', photo_url: 'assets/leadership/marice-n-aibekop.jpg', department: 'Kesehatan' },
+      { position_title: 'Anggota', full_name: 'Efaa Mlik', photo_url: 'assets/leadership/efaa-mlik.jpg', department: 'Kesehatan' },
+      { position_title: 'Anggota', full_name: 'Ella Morin', photo_url: 'assets/leadership/ella-morin.jpg', department: 'Kesehatan' },
+      { position_title: 'Anggota', full_name: 'Mariana Kalilaggo', photo_url: 'assets/leadership/mariana-kalilaggo.jpg', department: 'Kesehatan' },
+      { position_title: 'Koordinator', full_name: 'Maikel Y. Flassy', photo_url: 'assets/leadership/maikel-y-flassy.jpg', department: 'PDD' },
+      { position_title: 'Anggota', full_name: 'Peres N. Tijele', photo_url: 'assets/leadership/peres-n-tijele.jpg', department: 'PDD' },
+      { position_title: 'Anggota', full_name: 'Yane Serkadifat', photo_url: 'assets/leadership/yane-serkadifat.jpg', department: 'PDD' },
+      { position_title: 'Anggota', full_name: 'Ismail Yapen', photo_url: 'assets/leadership/ismail-yapen.jpg', department: 'PDD' }
+    ];
 
     function formatPeriod(period) {
       return period.end_year ? `${period.start_year}–${period.end_year}` : `${period.start_year}–sekarang`;
+    }
+
+    function showInitialLeadership(message) {
+      publicPeriodPicker.hidden = true;
+      currentPeriodHeading.hidden = false;
+      publicPeriodTitle.textContent = 'Susunan Pengurus HMSS';
+      publicPeriodYears.textContent = '';
+      publicPeriodActive.textContent = 'SUSUNAN PENGURUS';
+      renderPublicPositions(initialLeadership);
+      publicLeadershipStatus.textContent = message;
     }
 
     function renderPublicPositions(positions) {
@@ -331,36 +391,79 @@
         return;
       }
 
-      positions.forEach((position) => {
-        const card = document.createElement('article');
-        card.className = 'leadership-card';
-        const photo = document.createElement('div');
-        photo.className = 'leadership-photo';
-        if (position.photo_path) {
-          const image = document.createElement('img');
-          image.src = hmssSupabase.storage.from('hmss-organization').getPublicUrl(position.photo_path).data.publicUrl;
-          image.alt = `Foto ${position.full_name}`;
-          image.loading = 'lazy';
-          photo.append(image);
-        } else {
-          photo.textContent = 'HMSS';
-          photo.setAttribute('aria-label', 'Foto belum tersedia');
+      const chairPositions = positions.filter((position) => /^(ketua umum|ketua)$/i.test(position.position_title.trim()));
+      const vicePositions = positions.filter((position) => /^wakil ketua\b/i.test(position.position_title.trim()));
+      const assignedPositions = new Set([...chairPositions, ...vicePositions]);
+      if (!chairPositions.length) {
+        chairPositions.push(positions[0]);
+        assignedPositions.add(positions[0]);
+      }
+      const secretaryPositions = positions.filter((position) =>
+        /^sekretaris\b/i.test(position.position_title.trim())
+      );
+      const treasurerPositions = positions.filter((position) =>
+        /^bendahara\b/i.test(position.position_title.trim())
+      );
+      [...secretaryPositions, ...treasurerPositions].forEach((position) => assignedPositions.add(position));
+      const departmentPositions = new Map();
+      positions.filter((position) => position.department).forEach((position) => {
+        if (!departmentPositions.has(position.department)) {
+          departmentPositions.set(position.department, []);
         }
-        const details = document.createElement('div');
-        details.className = 'leadership-details';
-        const title = document.createElement('span');
-        title.textContent = position.position_title;
-        const name = document.createElement('h3');
-        name.textContent = position.full_name;
-        details.append(title, name);
-        if (position.description) {
-          const description = document.createElement('p');
-          description.textContent = position.description;
-          details.append(description);
-        }
-        card.append(photo, details);
-        publicLeadershipList.append(card);
+        departmentPositions.get(position.department).push(position);
+        assignedPositions.add(position);
       });
+      const otherPositions = positions.filter((position) => !assignedPositions.has(position));
+      const tiers = [
+        { label: 'Pimpinan', positions: chairPositions },
+        { label: 'Wakil Pimpinan', positions: vicePositions },
+        { label: 'Sekretariat', positions: secretaryPositions },
+        { label: 'Bendahara', positions: treasurerPositions },
+        ...Array.from(departmentPositions, ([label, members]) => ({ label: `Bidang ${label}`, positions: members })),
+        { label: 'Pengurus Lainnya', positions: otherPositions }
+      ].filter((tier) => tier.positions.length);
+
+      tiers.forEach((tier, index) => {
+        const group = document.createElement('div');
+        group.className = `leadership-tier leadership-tier-${index + 1}`;
+        const label = document.createElement('h4');
+        label.className = 'leadership-tier-label';
+        label.textContent = tier.label;
+        group.append(label);
+
+        tier.positions.forEach((position) => {
+          const card = document.createElement('article');
+          card.className = 'leadership-card';
+          const photo = document.createElement('div');
+          photo.className = 'leadership-photo';
+          if (position.photo_url || position.photo_path) {
+            const image = document.createElement('img');
+            image.src = position.photo_url || hmssSupabase.storage.from('hmss-organization').getPublicUrl(position.photo_path).data.publicUrl;
+            image.alt = `Foto ${position.full_name}`;
+            image.loading = 'lazy';
+            photo.append(image);
+          } else {
+            photo.textContent = position.full_name
+              .split(/\s+/)
+              .slice(0, 2)
+              .map((part) => part[0])
+              .join('')
+              .toUpperCase();
+            photo.setAttribute('aria-label', 'Foto belum tersedia');
+          }
+          const details = document.createElement('div');
+          details.className = 'leadership-details';
+          const title = document.createElement('span');
+          title.textContent = position.position_title;
+          const name = document.createElement('h3');
+          name.textContent = position.full_name;
+          details.append(title, name);
+          card.append(photo, details);
+          group.append(card);
+        });
+        publicLeadershipList.append(group);
+      });
+
     }
 
     async function loadPublicPositions(periodId) {
@@ -381,7 +484,7 @@
         .order('position_title', { ascending: true });
       if (error) {
         console.error('Gagal memuat jabatan pengurus HMSS:', error);
-        publicLeadershipStatus.textContent = 'Data pengurus belum dapat ditampilkan. Pengelola website perlu memeriksa konfigurasi Supabase.';
+        showInitialLeadership('Menampilkan susunan awal. Hubungkan Supabase untuk mengelola perubahan secara online.');
         return;
       }
       renderPublicPositions(data || []);
@@ -395,8 +498,7 @@
           .order('start_year', { ascending: false });
         if (error) throw error;
         if (!periods.length) {
-          currentPeriodHeading.hidden = true;
-          renderPublicPositions([]);
+          showInitialLeadership('Menampilkan susunan awal. Hubungkan Supabase untuk mengelola perubahan secara online.');
           return;
         }
 
@@ -415,34 +517,38 @@
         await loadPublicPositions(selectedPeriod.id);
       } catch (error) {
         console.error('Gagal memuat periode kepengurusan HMSS:', error);
-        currentPeriodHeading.hidden = true;
-        publicLeadershipStatus.textContent = 'Data kepengurusan belum dapat ditampilkan. Pengelola website perlu menyelesaikan konfigurasi Supabase.';
-        publicLeadershipList.replaceChildren();
+        showInitialLeadership('Menampilkan susunan awal. Hubungkan Supabase untuk mengelola perubahan secara online.');
       }
     }
 
     loadPublicLeadership();
 
-    document.querySelector('#form-pendaftaran').addEventListener('submit', (event) => {
+    document.querySelector('#form-pendaftaran').addEventListener('submit', async (event) => {
       event.preventDefault();
+      const status = document.querySelector('#membership-form-status');
+      const submitButton = event.currentTarget.querySelector('button[type="submit"]');
+      status.textContent = 'Mengirim pendaftaran...';
+      submitButton.disabled = true;
       const formData = new FormData(event.currentTarget);
-      const message = [
-        'Pendaftaran Keanggotaan HMSS',
-        '',
-        `Nama lengkap: ${formData.get('nama')}`,
-        `Perguruan tinggi: ${formData.get('kampus')}`,
-        `Program studi: ${formData.get('programStudi')}`,
-        `Angkatan: ${formData.get('angkatan')}`,
-        `WhatsApp pendaftar: ${formData.get('whatsapp')}`,
-        `Alasan bergabung: ${formData.get('alasan')}`
-      ].join('\n');
-      const whatsappUrl = `https://wa.me/6282217676455?text=${encodeURIComponent(message)}`;
-      const whatsappLink = document.createElement('a');
-      whatsappLink.href = whatsappUrl;
-      whatsappLink.target = '_blank';
-      whatsappLink.rel = 'noopener noreferrer';
-      whatsappLink.click();
+      const { error } = await hmssSupabase.from('hmss_members').insert({
+        full_name: String(formData.get('nama')).trim(),
+        university: String(formData.get('kampus')).trim(),
+        study_program: String(formData.get('programStudi')).trim(),
+        cohort: Number(formData.get('angkatan')),
+        whatsapp: String(formData.get('whatsapp')).trim(),
+        reason: String(formData.get('alasan')).trim()
+      });
+      submitButton.disabled = false;
+      if (error) {
+        status.textContent = `Pendaftaran gagal dikirim: ${error.message}. Coba kembali beberapa saat lagi.`;
+        status.classList.add('is-error');
+        return;
+      }
+      event.currentTarget.reset();
+      status.classList.remove('is-error');
+      status.textContent = 'Pendaftaran berhasil dikirim. Pengurus HMSS akan meninjaunya.';
     });
   </script>
+  <script src="public-backend.js"></script>
 </body>
 </html>

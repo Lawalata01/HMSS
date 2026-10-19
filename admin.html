@@ -38,56 +38,47 @@
         <div class="admin-user"><span class="admin-avatar">H</span><span><strong id="admin-user-name">HMSS</strong><small id="admin-user-status">Belum masuk</small></span><button class="admin-logout" id="admin-logout" type="button" hidden>Keluar</button></div>
       </header>
       <div class="admin-content">
-        <section id="dashboard-view">
-          <div class="demo-banner"><span class="demo-badge">DEMO</span><p><strong>Pratinjau tampilan saja.</strong> Dashboard ini belum memiliki login atau backend. Semua angka, aktivitas, dan data anggota di bawah adalah contoh, bukan data HMSS sebenarnya.</p></div>
+        <section class="admin-panel leadership-auth" id="leadership-auth">
+          <h2>Masuk ke Portal Admin HMSS</h2>
+          <p class="leadership-help">Gunakan akun admin Supabase yang sudah diberi izin. Hanya akun terdaftar yang dapat mengelola data website.</p>
+          <form id="leadership-login-form" class="leadership-login-form">
+            <label>Email admin
+              <input type="email" name="email" autocomplete="username" required>
+            </label>
+            <label>Kata sandi
+              <input type="password" name="password" autocomplete="current-password" required>
+            </label>
+            <button class="admin-action primary" type="submit">Masuk</button>
+          </form>
+          <p class="leadership-status" id="leadership-auth-status" role="status"></p>
+        </section>
+        <section id="dashboard-view" hidden>
           <div class="admin-welcome">
-            <div><div class="section-kicker"><span>RINGKASAN DEMO</span> / HMSS</div><h1>Pratinjau dashboard.</h1><p>Contoh tampilan pengelolaan website HMSS.</p></div>
-            <div class="admin-date">DATA CONTOH · 18 AGU 2025</div>
+            <div><div class="section-kicker"><span>RINGKASAN</span> / HMSS</div><h1>Dashboard HMSS</h1><p>Ringkasan data yang tersimpan di website.</p></div>
+            <div class="admin-date" id="admin-date"></div>
           </div>
           <div class="admin-stats">
-            <article class="stat-card"><div class="stat-card-top"><span>Total Berita</span><span class="stat-icon">▤</span></div><div class="stat-number">24</div><div class="stat-foot"><strong>+3</strong> berita bulan ini</div></article>
-            <article class="stat-card"><div class="stat-card-top"><span>Program Aktif</span><span class="stat-icon">◷</span></div><div class="stat-number">06</div><div class="stat-foot">Dari 8 program kerja</div></article>
-            <article class="stat-card"><div class="stat-card-top"><span>Data Anggota</span><span class="stat-icon">♙</span></div><div class="stat-number">128</div><div class="stat-foot"><strong>+12</strong> anggota baru</div></article>
-            <article class="stat-card"><div class="stat-card-top"><span>Pesan Masuk</span><span class="stat-icon">✉</span></div><div class="stat-number">08</div><div class="stat-foot"><strong>3 pesan</strong> belum dibaca</div></article>
+            <article class="stat-card"><div class="stat-card-top"><span>Total Berita</span><span class="stat-icon">▤</span></div><div class="stat-number" data-count="hmss_news">0</div><div class="stat-foot">Berita tersimpan</div></article>
+            <article class="stat-card"><div class="stat-card-top"><span>Program Kerja</span><span class="stat-icon">◷</span></div><div class="stat-number" data-count="hmss_programs">0</div><div class="stat-foot">Program tersimpan</div></article>
+            <article class="stat-card"><div class="stat-card-top"><span>Data Anggota</span><span class="stat-icon">♙</span></div><div class="stat-number" data-count="hmss_members">0</div><div class="stat-foot">Pendaftaran anggota</div></article>
+            <article class="stat-card"><div class="stat-card-top"><span>Pesan Baru</span><span class="stat-icon">✉</span></div><div class="stat-number" data-count="hmss_messages">0</div><div class="stat-foot">Belum ditindaklanjuti</div></article>
           </div>
+          <p class="leadership-status" id="dashboard-status" role="status"></p>
           <div class="admin-panels">
             <section class="admin-panel">
               <div class="panel-heading"><h2>Berita terbaru</h2><a href="#berita" data-view="berita">Kelola berita ↗</a></div>
-              <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>JUDUL</th><th>KATEGORI</th><th>TANGGAL</th><th>STATUS</th></tr></thead><tbody>
-                <tr><td class="table-title">Penerimaan anggota baru HMSS 2025 resmi dibuka</td><td>Pengumuman</td><td>12 Agu 2025</td><td><span class="status">Terbit</span></td></tr>
-                <tr><td class="table-title">Ruang Cerita: mendengar dan bertumbuh bersama</td><td>Kegiatan</td><td>28 Jul 2025</td><td><span class="status">Terbit</span></td></tr>
-                <tr><td class="table-title">Catatan perjalanan pengabdian Sorong Selatan</td><td>Cerita HMSS</td><td>10 Jul 2025</td><td><span class="status pending">Konsep</span></td></tr>
-              </tbody></table></div>
+              <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>JUDUL</th><th>KATEGORI</th><th>TANGGAL</th><th>STATUS</th></tr></thead><tbody id="admin-latest-news"></tbody></table></div>
             </section>
             <section class="admin-panel">
-              <div class="panel-heading"><h2>Aktivitas terbaru</h2><a href="#pesan" data-view="pesan">Lihat pesan ↗</a></div>
-              <div class="activity-list">
-                <div class="activity"><span class="activity-icon">✉</span><p><strong>Pesan baru</strong> dari Maria K.<small>15 menit yang lalu</small></p></div>
-                <div class="activity"><span class="activity-icon">▤</span><p><strong>Berita diperbarui</strong> — Ruang Cerita HMSS<small>2 jam yang lalu</small></p></div>
-                <div class="activity"><span class="activity-icon">♙</span><p><strong>Anggota baru</strong> menunggu verifikasi<small>Kemarin, 16.40 WIT</small></p></div>
-                <div class="activity"><span class="activity-icon">▧</span><p><strong>Galeri kegiatan</strong> ditambahkan<small>12 Agu 2025, 10.15 WIT</small></p></div>
-              </div>
+              <div class="panel-heading"><h2>Pesan terbaru</h2><a href="#pesan" data-view="pesan">Lihat pesan ↗</a></div>
+              <div class="activity-list" id="admin-recent-messages"></div>
             </section>
           </div>
         </section>
         <section id="management-view" hidden>
-          <div class="demo-banner"><span class="demo-badge">DEMO</span><p><strong>Menu ini hanya pratinjau.</strong> Belum terhubung ke database atau sistem login. Tidak ada data yang bisa disimpan atau diubah dari halaman ini.</p></div>
           <div class="admin-welcome"><div><div class="section-kicker"><span>KELOLA KONTEN</span> / HMSS</div><h1 id="view-title">Kelola Berita</h1><p id="view-description"></p></div></div>
-          <div class="admin-page-message" id="generic-manager"><h2 id="view-heading"></h2><p id="view-note"></p></div>
-          <section class="admin-panel leadership-auth" id="leadership-auth" hidden>
-            <h2>Masuk untuk mengelola kepengurusan</h2>
-            <p class="leadership-help">Gunakan akun admin yang sudah ditambahkan di Supabase. Akun yang tidak terdaftar sebagai admin tidak dapat mengubah data.</p>
-            <form id="leadership-login-form" class="leadership-login-form">
-              <label>Email admin
-                <input type="email" name="email" autocomplete="username" required>
-              </label>
-              <label>Kata sandi
-                <input type="password" name="password" autocomplete="current-password" required>
-              </label>
-              <button class="admin-action primary" type="submit">Masuk</button>
-            </form>
-            <p class="leadership-status" id="leadership-auth-status" role="status"></p>
-          </section>
+          <div class="admin-page-message" id="generic-manager" hidden><h2 id="view-heading"></h2><p id="view-note"></p></div>
+          <section class="admin-manager" id="content-manager" hidden></section>
           <section class="leadership-editor" id="leadership-editor" hidden>
             <div class="admin-panel">
               <div class="panel-heading">
@@ -145,7 +136,7 @@
   <script src="supabase-client.js"></script>
   <script>
     const views = {
-      dashboard: ['Dashboard', 'Ringkasan contoh dashboard HMSS.', 'Dashboard HMSS', 'Pratinjau antarmuka saja. Tidak ada data yang terhubung ke sistem pengelolaan.'],
+      dashboard: ['Dashboard', 'Ringkasan data website HMSS.', 'Dashboard HMSS', ''],
       berita: ['Kelola Berita', 'Atur informasi dan cerita terbaru untuk website publik.', 'Daftar berita', 'Kelola berita, pengumuman, kategori, dan status publikasi di sini.'],
       program: ['Kelola Program Kerja', 'Atur program dan agenda kegiatan HMSS.', 'Program kerja', 'Kelola deskripsi program, jadwal kegiatan, dan status pelaksanaan.'],
       galeri: ['Kelola Galeri', 'Atur foto dan dokumentasi kegiatan organisasi.', 'Galeri kegiatan', 'Kelola dokumentasi foto, keterangan, dan kategori galeri.'],
@@ -201,26 +192,39 @@
     }
 
     async function verifyAdminSession(session) {
+      const wasAuthorized = window.hmssAdminAuthorized === true;
       currentSession = session;
       const email = session.user.email || 'Admin';
       updateAdminIdentity(email, true);
       const { data, error } = await hmssSupabase.rpc('is_hmss_admin');
       if (error) {
+        currentSession = null;
+        window.hmssAdminAuthorized = false;
+        updateAdminIdentity('', false);
         leadershipAuth.hidden = false;
+        dashboardView.hidden = true;
+        managementView.hidden = true;
         leadershipEditor.hidden = true;
         showStatus(leadershipAuthStatus, `Pemeriksaan akses gagal. Jalankan supabase-setup.sql dan daftarkan UUID akun admin. (${error.message})`, true);
         return false;
       }
       if (!data) {
+        currentSession = null;
+        window.hmssAdminAuthorized = false;
+        updateAdminIdentity('', false);
         leadershipAuth.hidden = false;
+        dashboardView.hidden = true;
+        managementView.hidden = true;
         leadershipEditor.hidden = true;
         showStatus(leadershipAuthStatus, 'Akun ini belum diberi izin admin. Tambahkan UUID pengguna ke tabel hmss_admins di Supabase.', true);
         return false;
       }
+      window.hmssAdminAuthorized = true;
       leadershipAuth.hidden = true;
       leadershipEditor.hidden = false;
       showStatus(leadershipAuthStatus, '', false);
       await loadPeriods();
+      if (!wasAuthorized) window.dispatchEvent(new Event('hmss-admin-authorized'));
       return true;
     }
 
@@ -399,10 +403,14 @@
         return;
       }
       currentSession = null;
+      window.hmssAdminAuthorized = false;
       updateAdminIdentity('', false);
       leadershipEditor.hidden = true;
       leadershipAuth.hidden = false;
+      dashboardView.hidden = true;
+      managementView.hidden = true;
       showStatus(leadershipAuthStatus, 'Anda sudah keluar dari akun admin.', false);
+      window.dispatchEvent(new Event('hmss-admin-unauthorized'));
     });
 
     document.querySelector('#new-period-button').addEventListener('click', () => {
@@ -594,6 +602,13 @@
     document.querySelectorAll('[data-view]').forEach((link) => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
+        if (!window.hmssAdminAuthorized) {
+          leadershipAuth.hidden = false;
+          dashboardView.hidden = true;
+          managementView.hidden = true;
+          showStatus(leadershipAuthStatus, 'Masuk menggunakan akun admin Supabase yang terdaftar.', false);
+          return;
+        }
         const view = views[link.dataset.view];
         if (!view) return;
         document.querySelectorAll('.admin-nav a[data-view]').forEach((item) => item.classList.toggle('active', item.dataset.view === link.dataset.view));
@@ -605,8 +620,7 @@
           document.querySelector('#view-description').textContent = view[1];
           document.querySelector('#view-heading').textContent = view[2];
           document.querySelector('#view-note').textContent = view[3];
-          genericManager.hidden = link.dataset.view === 'kepengurusan';
-          managementView.querySelector('.demo-banner').hidden = link.dataset.view === 'kepengurusan';
+          genericManager.hidden = true;
           leadershipAuth.hidden = link.dataset.view !== 'kepengurusan';
           leadershipEditor.hidden = true;
           if (link.dataset.view === 'kepengurusan') openLeadershipManager();
@@ -615,10 +629,24 @@
       });
     });
 
-    if (window.location.hash === '#kepengurusan') {
-      document.querySelector('[data-view="kepengurusan"]').click();
+    async function initializeAdminPortal() {
+      const { data, error } = await hmssSupabase.auth.getSession();
+      if (error) {
+        showStatus(leadershipAuthStatus, `Sesi admin tidak dapat diperiksa: ${error.message}`, true);
+        return;
+      }
+      if (data.session) {
+        await verifyAdminSession(data.session);
+      } else {
+        updateAdminIdentity('', false);
+        leadershipAuth.hidden = false;
+        dashboardView.hidden = true;
+        managementView.hidden = true;
+      }
     }
+    initializeAdminPortal();
   </script>
+  <script src="admin-backend.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations()
