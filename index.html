@@ -14,7 +14,7 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html?page=beranda" aria-label="HMSS, kembali ke beranda">
-      <span class="brand-mark">H<span>M</span>SS</span>
+      <img class="brand-mark" src="logo-hmss.png" alt="Logo HMSS">
       <span class="brand-name">Himpunan Mahasiswa<br><strong>Sorong Selatan</strong></span>
     </a>
     <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="site-nav">
@@ -36,8 +36,8 @@
   <main>
     <section class="hero" id="beranda">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-line"></span> Satu tanah, satu tujuan</p>
-        <h1>Berakar di<br>Selatan. <span>Bertumbuh</span><br>bersama.</h1>
+        <p class="eyebrow"><span class="eyebrow-line"></span> Himpunan Mahasiswa Sorong Selatan</p>
+        <h1>Selamat Datang<br>di Web HMSS<br><span>Sukabumi Jawa Barat</span></h1>
         <p class="hero-description">Rumah bagi mahasiswa Sorong Selatan untuk saling menguatkan, mengembangkan potensi, dan membawa perubahan bagi tanah Papua.</p>
         <div class="hero-actions">
           <a class="button button-dark" href="index.html?page=profil">Kenali HMSS <span aria-hidden="true">↗</span></a>
@@ -45,7 +45,7 @@
         </div>
         <div class="hero-note"><span class="note-dot"></span> Dari Sorong Selatan, untuk masa depan</div>
       </div>
-      <div class="hero-art" role="img" aria-label="Hutan hijau dan perbukitan tropis Papua">
+      <div class="hero-art" role="img" aria-label="Foto anggota Himpunan Mahasiswa Sorong Selatan">
         <div class="hero-image"></div>
         <div class="art-label"><span class="art-label-icon">✳</span><span>Suara muda<br><strong>dari Selatan</strong></span></div>
         <div class="hero-coordinate">01° 30' LS &nbsp;·&nbsp; 132° 00' BT</div>
@@ -89,52 +89,21 @@
           <div class="section-kicker"><span>02</span> / STRUKTUR KEPENGURUSAN</div>
           <h2>Satu tim,<br><span>banyak peran.</span></h2>
         </div>
-        <p class="structure-intro">Kepengurusan menjadi ruang untuk bekerja bersama, saling mendukung, dan membawa HMSS bertumbuh.</p>
-      </div>
-      <div class="organization-chart" aria-label="Bagan struktur kepengurusan HMSS">
-        <div class="organization-lead">
-          <span>BADAN PENGURUS</span>
-          <strong>Ketua Himpunan</strong>
-        </div>
-        <div class="organization-connector" aria-hidden="true"></div>
-        <div class="organization-deputy">
-          <span>BADAN PENGURUS</span>
-          <strong>Wakil Ketua</strong>
-        </div>
-        <div class="organization-branches">
-          <article class="organization-card">
-            <span>SEKRETARIAT</span>
-            <h3>Sekretaris</h3>
-            <p>Administrasi dan dokumentasi organisasi</p>
-          </article>
-          <article class="organization-card">
-            <span>KEUANGAN</span>
-            <h3>Bendahara</h3>
-            <p>Pengelolaan dan pelaporan keuangan</p>
-          </article>
-          <article class="organization-card">
-            <span>BIDANG</span>
-            <h3>Pengembangan Anggota</h3>
-            <p>Kaderisasi dan pengembangan kapasitas</p>
-          </article>
-          <article class="organization-card">
-            <span>BIDANG</span>
-            <h3>Pendidikan &amp; Pengabdian</h3>
-            <p>Ruang belajar dan kontribusi masyarakat</p>
-          </article>
-          <article class="organization-card">
-            <span>BIDANG</span>
-            <h3>Minat &amp; Bakat</h3>
-            <p>Kegiatan kreatif, seni, dan olahraga</p>
-          </article>
-          <article class="organization-card">
-            <span>BIDANG</span>
-            <h3>Komunikasi &amp; Informasi</h3>
-            <p>Publikasi dan hubungan komunikasi</p>
-          </article>
+        <div class="structure-intro">
+          <p>Kepengurusan menjadi ruang untuk bekerja bersama, saling mendukung, dan membawa HMSS bertumbuh.</p>
+          <label class="period-picker" id="public-period-picker" hidden>Periode kepengurusan
+            <select id="public-period-select" aria-label="Pilih periode kepengurusan"></select>
+          </label>
         </div>
       </div>
-      <p class="structure-note">Bagan ini merupakan rancangan awal tanpa nama pengurus. Sesuaikan nama bidang dan jabatan dengan susunan resmi HMSS.</p>
+      <div class="current-period-heading" id="current-period-heading" hidden>
+        <div><span id="public-period-active"></span><h3 id="public-period-title"></h3></div>
+        <span id="public-period-years"></span>
+      </div>
+      <div class="leadership-list" id="public-leadership-list" aria-live="polite">
+        <p class="leadership-empty">Memuat informasi kepengurusan...</p>
+      </div>
+      <p class="structure-note" id="public-leadership-status" role="status"></p>
     </section>
 
     <section class="news-section section-pad" id="berita">
@@ -290,11 +259,14 @@
   </main>
 
   <footer class="site-footer">
-    <a class="brand footer-brand" href="index.html?page=beranda"><span class="brand-mark">H<span>M</span>SS</span><span class="brand-name">Himpunan Mahasiswa<br><strong>Sorong Selatan</strong></span></a>
+    <a class="brand footer-brand" href="index.html?page=beranda"><img class="brand-mark" src="logo-hmss.png" alt="Logo HMSS"><span class="brand-name">Himpunan Mahasiswa<br><strong>Sorong Selatan</strong></span></a>
     <p>Merawat kebersamaan, menumbuhkan harapan.</p>
     <div class="footer-bottom"><span>© HMSS · Konten dan data kontak pada halaman ini merupakan contoh rancangan.</span><a href="admin.html">Portal Admin ↗</a><a href="index.html?page=beranda">Kembali ke beranda ↑</a></div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="supabase-config.js"></script>
+  <script src="supabase-client.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations()
@@ -334,6 +306,122 @@
         siteNav.classList.remove('is-open');
       });
     });
+
+    const publicLeadershipList = document.querySelector('#public-leadership-list');
+    const publicLeadershipStatus = document.querySelector('#public-leadership-status');
+    const publicPeriodPicker = document.querySelector('#public-period-picker');
+    const publicPeriodSelect = document.querySelector('#public-period-select');
+    const currentPeriodHeading = document.querySelector('#current-period-heading');
+    const publicPeriodTitle = document.querySelector('#public-period-title');
+    const publicPeriodYears = document.querySelector('#public-period-years');
+    const publicPeriodActive = document.querySelector('#public-period-active');
+    let publicPeriods = [];
+
+    function formatPeriod(period) {
+      return period.end_year ? `${period.start_year}–${period.end_year}` : `${period.start_year}–sekarang`;
+    }
+
+    function renderPublicPositions(positions) {
+      publicLeadershipList.replaceChildren();
+      if (!positions.length) {
+        const empty = document.createElement('p');
+        empty.className = 'leadership-empty';
+        empty.textContent = 'Belum ada data pengurus untuk periode ini.';
+        publicLeadershipList.append(empty);
+        return;
+      }
+
+      positions.forEach((position) => {
+        const card = document.createElement('article');
+        card.className = 'leadership-card';
+        const photo = document.createElement('div');
+        photo.className = 'leadership-photo';
+        if (position.photo_path) {
+          const image = document.createElement('img');
+          image.src = hmssSupabase.storage.from('hmss-organization').getPublicUrl(position.photo_path).data.publicUrl;
+          image.alt = `Foto ${position.full_name}`;
+          image.loading = 'lazy';
+          photo.append(image);
+        } else {
+          photo.textContent = 'HMSS';
+          photo.setAttribute('aria-label', 'Foto belum tersedia');
+        }
+        const details = document.createElement('div');
+        details.className = 'leadership-details';
+        const title = document.createElement('span');
+        title.textContent = position.position_title;
+        const name = document.createElement('h3');
+        name.textContent = position.full_name;
+        details.append(title, name);
+        if (position.description) {
+          const description = document.createElement('p');
+          description.textContent = position.description;
+          details.append(description);
+        }
+        card.append(photo, details);
+        publicLeadershipList.append(card);
+      });
+    }
+
+    async function loadPublicPositions(periodId) {
+      publicLeadershipStatus.textContent = '';
+      publicLeadershipList.replaceChildren();
+      const period = publicPeriods.find((item) => item.id === periodId);
+      if (period) {
+        currentPeriodHeading.hidden = false;
+        publicPeriodTitle.textContent = period.title;
+        publicPeriodYears.textContent = formatPeriod(period);
+        publicPeriodActive.textContent = period.is_active ? 'PERIODE AKTIF' : '';
+      }
+      const { data, error } = await hmssSupabase
+        .from('leadership_positions')
+        .select('id, position_title, full_name, description, photo_path, sort_order')
+        .eq('period_id', periodId)
+        .order('sort_order', { ascending: true })
+        .order('position_title', { ascending: true });
+      if (error) {
+        console.error('Gagal memuat jabatan pengurus HMSS:', error);
+        publicLeadershipStatus.textContent = 'Data pengurus belum dapat ditampilkan. Pengelola website perlu memeriksa konfigurasi Supabase.';
+        return;
+      }
+      renderPublicPositions(data || []);
+    }
+
+    async function loadPublicLeadership() {
+      try {
+        const { data: periods, error } = await hmssSupabase
+          .from('leadership_periods')
+          .select('id, title, start_year, end_year, is_active')
+          .order('start_year', { ascending: false });
+        if (error) throw error;
+        if (!periods.length) {
+          currentPeriodHeading.hidden = true;
+          renderPublicPositions([]);
+          return;
+        }
+
+        publicPeriods = periods;
+        publicPeriodSelect.replaceChildren();
+        periods.forEach((period) => {
+          const option = document.createElement('option');
+          option.value = period.id;
+          option.textContent = `${period.title} (${formatPeriod(period)})${period.is_active ? ' · Aktif' : ''}`;
+          publicPeriodSelect.append(option);
+        });
+        publicPeriodPicker.hidden = periods.length < 2;
+        const selectedPeriod = periods.find((period) => period.is_active) || periods[0];
+        publicPeriodSelect.value = selectedPeriod.id;
+        publicPeriodSelect.addEventListener('change', () => loadPublicPositions(publicPeriodSelect.value));
+        await loadPublicPositions(selectedPeriod.id);
+      } catch (error) {
+        console.error('Gagal memuat periode kepengurusan HMSS:', error);
+        currentPeriodHeading.hidden = true;
+        publicLeadershipStatus.textContent = 'Data kepengurusan belum dapat ditampilkan. Pengelola website perlu menyelesaikan konfigurasi Supabase.';
+        publicLeadershipList.replaceChildren();
+      }
+    }
+
+    loadPublicLeadership();
 
     document.querySelector('#form-pendaftaran').addEventListener('submit', (event) => {
       event.preventDefault();

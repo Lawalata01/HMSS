@@ -14,7 +14,7 @@
   <div class="admin-layout">
     <aside class="admin-sidebar">
       <a class="brand" href="index.html">
-        <span class="brand-mark">H<span>M</span>SS</span>
+        <img class="brand-mark" src="logo-hmss.png" alt="Logo HMSS">
         <span class="brand-name">Himpunan Mahasiswa<br><strong>Sorong Selatan</strong></span>
       </a>
       <p class="admin-label">MENU UTAMA</p>
@@ -24,6 +24,7 @@
         <a href="#program" data-view="program"><span>◷</span>Kelola Program Kerja</a>
         <a href="#galeri" data-view="galeri"><span>▧</span>Kelola Galeri</a>
         <a href="#anggota" data-view="anggota"><span>♙</span>Kelola Anggota</a>
+        <a href="#kepengurusan" data-view="kepengurusan"><span>♧</span>Kepengurusan</a>
         <a href="#pesan" data-view="pesan"><span>✉</span>Kelola Pesan</a>
         <a href="#pengaturan" data-view="pengaturan"><span>⚙</span>Pengaturan Website</a>
       </nav>
@@ -34,7 +35,7 @@
     <main class="admin-main">
       <header class="admin-topbar">
         <div class="admin-breadcrumb">HMSS Admin <span aria-hidden="true"> / </span> <strong id="breadcrumb-current">Dashboard</strong></div>
-        <div class="admin-user"><span class="admin-avatar">D</span><span><strong>Mode demo</strong><small>Login belum tersedia</small></span></div>
+        <div class="admin-user"><span class="admin-avatar">H</span><span><strong id="admin-user-name">HMSS</strong><small id="admin-user-status">Belum masuk</small></span><button class="admin-logout" id="admin-logout" type="button" hidden>Keluar</button></div>
       </header>
       <div class="admin-content">
         <section id="dashboard-view">
@@ -72,11 +73,76 @@
         <section id="management-view" hidden>
           <div class="demo-banner"><span class="demo-badge">DEMO</span><p><strong>Menu ini hanya pratinjau.</strong> Belum terhubung ke database atau sistem login. Tidak ada data yang bisa disimpan atau diubah dari halaman ini.</p></div>
           <div class="admin-welcome"><div><div class="section-kicker"><span>KELOLA KONTEN</span> / HMSS</div><h1 id="view-title">Kelola Berita</h1><p id="view-description"></p></div></div>
-          <div class="admin-page-message"><h2 id="view-heading"></h2><p id="view-note"></p></div>
+          <div class="admin-page-message" id="generic-manager"><h2 id="view-heading"></h2><p id="view-note"></p></div>
+          <section class="admin-panel leadership-auth" id="leadership-auth" hidden>
+            <h2>Masuk untuk mengelola kepengurusan</h2>
+            <p class="leadership-help">Gunakan akun admin yang sudah ditambahkan di Supabase. Akun yang tidak terdaftar sebagai admin tidak dapat mengubah data.</p>
+            <form id="leadership-login-form" class="leadership-login-form">
+              <label>Email admin
+                <input type="email" name="email" autocomplete="username" required>
+              </label>
+              <label>Kata sandi
+                <input type="password" name="password" autocomplete="current-password" required>
+              </label>
+              <button class="admin-action primary" type="submit">Masuk</button>
+            </form>
+            <p class="leadership-status" id="leadership-auth-status" role="status"></p>
+          </section>
+          <section class="leadership-editor" id="leadership-editor" hidden>
+            <div class="admin-panel">
+              <div class="panel-heading">
+                <div><h2>Periode kepengurusan</h2><p class="leadership-help">Buat satu periode untuk setiap susunan pengurus. Periode aktif ditampilkan pertama kali pada website publik.</p></div>
+                <button class="admin-action" id="new-period-button" type="button">+ Periode baru</button>
+              </div>
+              <label class="period-admin-picker">Pilih periode
+                <select id="admin-period-select"></select>
+              </label>
+              <form class="period-form" id="period-form">
+                <input type="hidden" name="id">
+                <label>Nama periode
+                  <input name="title" type="text" maxlength="100" placeholder="Contoh: Kepengurusan HMSS" required>
+                </label>
+                <label>Tahun mulai
+                  <input name="start_year" type="number" min="1900" max="2200" required>
+                </label>
+                <label>Tahun selesai
+                  <input name="end_year" type="number" min="1900" max="2200" placeholder="Kosongkan jika masih berjalan">
+                </label>
+                <label class="period-active"><input name="is_active" type="checkbox"> Jadikan periode aktif di website publik</label>
+                <div class="period-actions">
+                  <button class="admin-action primary" type="submit">Simpan periode</button>
+                  <button class="admin-action danger" id="delete-period-button" type="button" hidden>Hapus periode</button>
+                </div>
+              </form>
+            </div>
+            <div class="admin-panel position-manager">
+              <div class="panel-heading"><div><h2>Jabatan dan pengurus</h2><p class="leadership-help">Tambahkan nama jabatan, nama pengurus, deskripsi opsional, dan foto.</p></div></div>
+              <form class="position-form" id="position-form">
+                <label>Jabatan
+                  <input name="position_title" type="text" maxlength="100" placeholder="Contoh: Ketua Himpunan" required>
+                </label>
+                <label>Nama lengkap
+                  <input name="full_name" type="text" maxlength="120" required>
+                </label>
+                <label>Deskripsi (opsional)
+                  <input name="description" type="text" maxlength="300" placeholder="Contoh: Koordinator bidang ...">
+                </label>
+                <label>Foto (JPG, PNG, atau WebP; maks. 5 MB)
+                  <input name="photo" type="file" accept="image/jpeg,image/png,image/webp">
+                </label>
+                <button class="admin-action primary" type="submit">Tambah pengurus</button>
+              </form>
+              <div class="leadership-admin-list" id="leadership-admin-list"></div>
+              <p class="leadership-status" id="leadership-editor-status" role="status"></p>
+            </div>
+          </section>
         </section>
       </div>
     </main>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="supabase-config.js"></script>
+  <script src="supabase-client.js"></script>
   <script>
     const views = {
       dashboard: ['Dashboard', 'Ringkasan contoh dashboard HMSS.', 'Dashboard HMSS', 'Pratinjau antarmuka saja. Tidak ada data yang terhubung ke sistem pengelolaan.'],
@@ -84,15 +150,452 @@
       program: ['Kelola Program Kerja', 'Atur program dan agenda kegiatan HMSS.', 'Program kerja', 'Kelola deskripsi program, jadwal kegiatan, dan status pelaksanaan.'],
       galeri: ['Kelola Galeri', 'Atur foto dan dokumentasi kegiatan organisasi.', 'Galeri kegiatan', 'Kelola dokumentasi foto, keterangan, dan kategori galeri.'],
       anggota: ['Kelola Anggota', 'Lihat dan perbarui data keanggotaan HMSS.', 'Data anggota', 'Kelola data anggota, status keanggotaan, dan proses verifikasi.'],
+      kepengurusan: ['Kepengurusan', 'Kelola periode, nama, jabatan, dan foto pengurus HMSS.', 'Kelola kepengurusan', 'Atur setiap periode kepengurusan HMSS.'],
       pesan: ['Kelola Pesan', 'Tinjau pesan dan pertanyaan dari pengunjung website.', 'Kotak pesan', 'Tinjau pesan masuk dan tandai pesan yang sudah ditindaklanjuti.'],
       pengaturan: ['Pengaturan Website', 'Atur informasi dasar dan tampilan website HMSS.', 'Pengaturan website', 'Kelola profil organisasi, kontak, tautan media sosial, dan informasi website.']
     };
     const dashboardView = document.querySelector('#dashboard-view');
     const managementView = document.querySelector('#management-view');
+    const genericManager = document.querySelector('#generic-manager');
+    const leadershipAuth = document.querySelector('#leadership-auth');
+    const leadershipEditor = document.querySelector('#leadership-editor');
+    const leadershipAuthStatus = document.querySelector('#leadership-auth-status');
+    const leadershipEditorStatus = document.querySelector('#leadership-editor-status');
+    const leadershipLoginForm = document.querySelector('#leadership-login-form');
+    const adminUserName = document.querySelector('#admin-user-name');
+    const adminUserStatus = document.querySelector('#admin-user-status');
+    const adminLogout = document.querySelector('#admin-logout');
+    const periodSelect = document.querySelector('#admin-period-select');
+    const periodForm = document.querySelector('#period-form');
+    const periodDeleteButton = document.querySelector('#delete-period-button');
+    const positionForm = document.querySelector('#position-form');
+    const adminPositionList = document.querySelector('#leadership-admin-list');
+    let currentSession = null;
+
+    function showStatus(element, message, isError) {
+      element.textContent = message;
+      element.classList.toggle('is-error', Boolean(isError));
+    }
+
+    function updateAdminIdentity(email, authenticated) {
+      adminUserName.textContent = authenticated ? email : 'HMSS';
+      adminUserStatus.textContent = authenticated ? 'Admin masuk' : 'Belum masuk';
+      adminLogout.hidden = !authenticated;
+    }
+
+    function formatPeriod(period) {
+      return period.end_year ? `${period.start_year}–${period.end_year}` : `${period.start_year}–sekarang`;
+    }
+
+    function makeField(labelText, name, value, type, required, maxLength) {
+      const label = document.createElement('label');
+      label.textContent = labelText;
+      const input = document.createElement('input');
+      input.name = name;
+      input.type = type || 'text';
+      input.value = value || '';
+      if (required) input.required = true;
+      if (maxLength) input.maxLength = maxLength;
+      label.append(input);
+      return label;
+    }
+
+    async function verifyAdminSession(session) {
+      currentSession = session;
+      const email = session.user.email || 'Admin';
+      updateAdminIdentity(email, true);
+      const { data, error } = await hmssSupabase.rpc('is_hmss_admin');
+      if (error) {
+        leadershipAuth.hidden = false;
+        leadershipEditor.hidden = true;
+        showStatus(leadershipAuthStatus, `Pemeriksaan akses gagal. Jalankan supabase-setup.sql dan daftarkan UUID akun admin. (${error.message})`, true);
+        return false;
+      }
+      if (!data) {
+        leadershipAuth.hidden = false;
+        leadershipEditor.hidden = true;
+        showStatus(leadershipAuthStatus, 'Akun ini belum diberi izin admin. Tambahkan UUID pengguna ke tabel hmss_admins di Supabase.', true);
+        return false;
+      }
+      leadershipAuth.hidden = true;
+      leadershipEditor.hidden = false;
+      showStatus(leadershipAuthStatus, '', false);
+      await loadPeriods();
+      return true;
+    }
+
+    async function openLeadershipManager() {
+      genericManager.hidden = true;
+      document.querySelector('#view-description').textContent = 'Kelola seluruh periode kepengurusan, jabatan, nama, dan foto.';
+      leadershipAuth.hidden = false;
+      leadershipEditor.hidden = true;
+      showStatus(leadershipAuthStatus, '', false);
+      const { data, error } = await hmssSupabase.auth.getSession();
+      if (error) {
+        showStatus(leadershipAuthStatus, `Sesi admin tidak dapat diperiksa: ${error.message}`, true);
+        return;
+      }
+      if (data.session) await verifyAdminSession(data.session);
+      else showStatus(leadershipAuthStatus, 'Masuk menggunakan akun admin Supabase.', false);
+    }
+
+    function resetPeriodForm() {
+      periodForm.reset();
+      periodForm.elements.id.value = '';
+      periodForm.elements.start_year.value = new Date().getFullYear();
+      periodDeleteButton.hidden = true;
+    }
+
+    function selectPeriod(period) {
+      periodSelect.value = period.id;
+      periodForm.elements.id.value = period.id;
+      periodForm.elements.title.value = period.title;
+      periodForm.elements.start_year.value = period.start_year;
+      periodForm.elements.end_year.value = period.end_year || '';
+      periodForm.elements.is_active.checked = period.is_active;
+      periodDeleteButton.hidden = false;
+      positionForm.hidden = false;
+      loadPositions(period.id);
+    }
+
+    async function loadPeriods(preferredId) {
+      showStatus(leadershipEditorStatus, '', false);
+      const { data, error } = await hmssSupabase
+        .from('leadership_periods')
+        .select('id, title, start_year, end_year, is_active')
+        .order('start_year', { ascending: false });
+      if (error) {
+        showStatus(leadershipEditorStatus, `Periode tidak dapat dimuat: ${error.message}`, true);
+        return;
+      }
+
+      periodSelect.replaceChildren();
+      if (!data.length) {
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'Belum ada periode';
+        periodSelect.append(option);
+        resetPeriodForm();
+        positionForm.hidden = true;
+        adminPositionList.replaceChildren();
+        return;
+      }
+
+      data.forEach((period) => {
+        const option = document.createElement('option');
+        option.value = period.id;
+        option.textContent = `${period.title} (${formatPeriod(period)})${period.is_active ? ' · Aktif' : ''}`;
+        periodSelect.append(option);
+      });
+      const selected = data.find((period) => period.id === preferredId)
+        || data.find((period) => period.is_active)
+        || data[0];
+      selectPeriod(selected);
+    }
+
+    async function loadPositions(periodId) {
+      adminPositionList.replaceChildren();
+      const { data, error } = await hmssSupabase
+        .from('leadership_positions')
+        .select('id, position_title, full_name, description, photo_path, sort_order')
+        .eq('period_id', periodId)
+        .order('sort_order', { ascending: true })
+        .order('position_title', { ascending: true });
+      if (error) {
+        showStatus(leadershipEditorStatus, `Data jabatan tidak dapat dimuat: ${error.message}`, true);
+        return;
+      }
+      if (!data.length) {
+        const empty = document.createElement('p');
+        empty.className = 'leadership-help';
+        empty.textContent = 'Belum ada jabatan pada periode ini. Gunakan formulir di atas untuk menambahkan pengurus.';
+        adminPositionList.append(empty);
+        return;
+      }
+
+      data.forEach((position) => {
+        const form = document.createElement('form');
+        form.className = 'position-edit-card';
+        form.dataset.positionId = position.id;
+        if (position.photo_path) {
+          const photo = document.createElement('img');
+          photo.className = 'position-edit-photo';
+          photo.src = hmssSupabase.storage.from('hmss-organization').getPublicUrl(position.photo_path).data.publicUrl;
+          photo.alt = `Foto ${position.full_name}`;
+          photo.loading = 'lazy';
+          form.append(photo);
+        }
+        form.append(
+          makeField('Jabatan', 'position_title', position.position_title, 'text', true, 100),
+          makeField('Nama lengkap', 'full_name', position.full_name, 'text', true, 120),
+          makeField('Deskripsi (opsional)', 'description', position.description, 'text', false, 300)
+        );
+        const photoLabel = document.createElement('label');
+        photoLabel.textContent = 'Ganti foto (opsional)';
+        const photoInput = document.createElement('input');
+        photoInput.name = 'photo';
+        photoInput.type = 'file';
+        photoInput.accept = 'image/jpeg,image/png,image/webp';
+        photoLabel.append(photoInput);
+        const actions = document.createElement('div');
+        actions.className = 'position-edit-actions';
+        const save = document.createElement('button');
+        save.type = 'submit';
+        save.className = 'admin-action primary';
+        save.textContent = 'Simpan perubahan';
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'admin-action danger';
+        remove.dataset.deletePosition = position.id;
+        remove.textContent = 'Hapus';
+        actions.append(save, remove);
+        form.append(photoLabel, actions);
+        adminPositionList.append(form);
+      });
+    }
+
+    async function uploadPhoto(file) {
+      if (!file || !file.name) return null;
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+      if (!allowedTypes.includes(file.type)) throw new Error('Foto harus berupa JPG, PNG, atau WebP.');
+      if (file.size > 5 * 1024 * 1024) throw new Error('Ukuran foto maksimal 5 MB.');
+      const extension = file.type === 'image/jpeg' ? 'jpg' : file.type.split('/')[1];
+      const randomId = window.crypto?.randomUUID ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      const path = `${randomId}.${extension}`;
+      const { error } = await hmssSupabase.storage.from('hmss-organization').upload(path, file, {
+        contentType: file.type,
+        cacheControl: '3600',
+        upsert: false
+      });
+      if (error) throw error;
+      return path;
+    }
+
+    async function removePhoto(path) {
+      if (!path) return;
+      const { error } = await hmssSupabase.storage.from('hmss-organization').remove([path]);
+      if (error) throw error;
+    }
+
+    leadershipLoginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(leadershipLoginForm);
+      const { data, error } = await hmssSupabase.auth.signInWithPassword({
+        email: formData.get('email'),
+        password: formData.get('password')
+      });
+      if (error) {
+        showStatus(leadershipAuthStatus, `Tidak dapat masuk: ${error.message}`, true);
+        return;
+      }
+      leadershipLoginForm.reset();
+      await verifyAdminSession(data.session);
+    });
+
+    adminLogout.addEventListener('click', async () => {
+      const { error } = await hmssSupabase.auth.signOut();
+      if (error) {
+        showStatus(leadershipAuthStatus, `Gagal keluar: ${error.message}`, true);
+        return;
+      }
+      currentSession = null;
+      updateAdminIdentity('', false);
+      leadershipEditor.hidden = true;
+      leadershipAuth.hidden = false;
+      showStatus(leadershipAuthStatus, 'Anda sudah keluar dari akun admin.', false);
+    });
+
+    document.querySelector('#new-period-button').addEventListener('click', () => {
+      periodSelect.value = '';
+      resetPeriodForm();
+      positionForm.hidden = true;
+      adminPositionList.replaceChildren();
+      showStatus(leadershipEditorStatus, 'Isi formulir untuk membuat periode kepengurusan baru.', false);
+    });
+
+    periodSelect.addEventListener('change', async () => {
+      const { data, error } = await hmssSupabase
+        .from('leadership_periods')
+        .select('id, title, start_year, end_year, is_active')
+        .eq('id', periodSelect.value)
+        .single();
+      if (error) {
+        showStatus(leadershipEditorStatus, `Periode tidak dapat dibuka: ${error.message}`, true);
+        return;
+      }
+      selectPeriod(data);
+      showStatus(leadershipEditorStatus, '', false);
+    });
+
+    periodForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const values = new FormData(periodForm);
+      const startYear = Number(values.get('start_year'));
+      const endYear = values.get('end_year') ? Number(values.get('end_year')) : null;
+      if (endYear && endYear < startYear) {
+        showStatus(leadershipEditorStatus, 'Tahun selesai tidak boleh sebelum tahun mulai.', true);
+        return;
+      }
+      const payload = {
+        title: String(values.get('title')).trim(),
+        start_year: startYear,
+        end_year: endYear,
+        is_active: periodForm.elements.is_active.checked
+      };
+      const periodId = String(values.get('id') || '');
+      const query = periodId
+        ? hmssSupabase.from('leadership_periods').update(payload).eq('id', periodId)
+        : hmssSupabase.from('leadership_periods').insert(payload);
+      const { data, error } = await query.select('id').single();
+      if (error) {
+        showStatus(leadershipEditorStatus, `Periode tidak tersimpan: ${error.message}`, true);
+        return;
+      }
+      await loadPeriods(data.id);
+      showStatus(leadershipEditorStatus, 'Periode kepengurusan berhasil disimpan.', false);
+    });
+
+    periodDeleteButton.addEventListener('click', async () => {
+      const periodId = periodForm.elements.id.value;
+      if (!periodId || !window.confirm('Hapus periode beserta seluruh jabatan pengurusnya?')) return;
+      const { data: positions, error: listError } = await hmssSupabase
+        .from('leadership_positions')
+        .select('photo_path')
+        .eq('period_id', periodId);
+      if (listError) {
+        showStatus(leadershipEditorStatus, `Data periode tidak dapat diperiksa: ${listError.message}`, true);
+        return;
+      }
+      const { error } = await hmssSupabase.from('leadership_periods').delete().eq('id', periodId);
+      if (error) {
+        showStatus(leadershipEditorStatus, `Periode tidak terhapus: ${error.message}`, true);
+        return;
+      }
+      try {
+        await removePhotoFiles(positions.map((position) => position.photo_path).filter(Boolean));
+      } catch (cleanupError) {
+        showStatus(leadershipEditorStatus, `Periode terhapus, tetapi sebagian foto lama tidak terhapus: ${cleanupError.message}`, true);
+        await loadPeriods();
+        return;
+      }
+      await loadPeriods();
+      showStatus(leadershipEditorStatus, 'Periode dan seluruh jabatan terkait berhasil dihapus.', false);
+    });
+
+    async function removePhotoFiles(paths) {
+      if (!paths.length) return;
+      const { error } = await hmssSupabase.storage.from('hmss-organization').remove(paths);
+      if (error) throw error;
+    }
+
+    positionForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const periodId = periodForm.elements.id.value;
+      if (!periodId) {
+        showStatus(leadershipEditorStatus, 'Simpan periode terlebih dahulu sebelum menambah pengurus.', true);
+        return;
+      }
+      const values = new FormData(positionForm);
+      let photoPath = null;
+      try {
+        photoPath = await uploadPhoto(values.get('photo'));
+        const { error } = await hmssSupabase.from('leadership_positions').insert({
+          period_id: periodId,
+          position_title: String(values.get('position_title')).trim(),
+          full_name: String(values.get('full_name')).trim(),
+          description: String(values.get('description') || '').trim(),
+          photo_path: photoPath,
+          sort_order: adminPositionList.querySelectorAll('.position-edit-card').length
+        });
+        if (error) {
+          if (photoPath) await removePhoto(photoPath);
+          throw error;
+        }
+      } catch (error) {
+        showStatus(leadershipEditorStatus, `Pengurus tidak tersimpan: ${error.message}`, true);
+        return;
+      }
+      positionForm.reset();
+      await loadPositions(periodId);
+      showStatus(leadershipEditorStatus, 'Data pengurus berhasil ditambahkan.', false);
+    });
+
+    adminPositionList.addEventListener('submit', async (event) => {
+      const form = event.target.closest('.position-edit-card');
+      if (!form) return;
+      event.preventDefault();
+      const formData = new FormData(form);
+      const currentPhoto = form.querySelector('.position-edit-photo');
+      const oldPhotoUrl = currentPhoto?.src;
+      let newPhotoPath = null;
+      try {
+        newPhotoPath = await uploadPhoto(formData.get('photo'));
+        const payload = {
+          position_title: String(formData.get('position_title')).trim(),
+          full_name: String(formData.get('full_name')).trim(),
+          description: String(formData.get('description') || '').trim()
+        };
+        if (newPhotoPath) payload.photo_path = newPhotoPath;
+        const { error } = await hmssSupabase
+          .from('leadership_positions')
+          .update(payload)
+          .eq('id', form.dataset.positionId);
+        if (error) {
+          if (newPhotoPath) await removePhoto(newPhotoPath);
+          throw error;
+        }
+      } catch (error) {
+        showStatus(leadershipEditorStatus, `Perubahan pengurus tidak tersimpan: ${error.message}`, true);
+        return;
+      }
+      if (newPhotoPath && oldPhotoUrl) {
+        const oldPath = new URL(oldPhotoUrl).pathname.split('/hmss-organization/')[1];
+        try {
+          if (oldPath) await removePhoto(decodeURIComponent(oldPath));
+        } catch (error) {
+          await loadPositions(periodForm.elements.id.value);
+          showStatus(leadershipEditorStatus, `Perubahan pengurus tersimpan, tetapi foto lama tidak terhapus: ${error.message}`, true);
+          return;
+        }
+      }
+      await loadPositions(periodForm.elements.id.value);
+      showStatus(leadershipEditorStatus, 'Perubahan pengurus berhasil disimpan.', false);
+    });
+
+    adminPositionList.addEventListener('click', async (event) => {
+      const button = event.target.closest('[data-delete-position]');
+      if (!button || !window.confirm('Hapus data pengurus ini?')) return;
+      const positionId = button.dataset.deletePosition;
+      const { data: position, error: lookupError } = await hmssSupabase
+        .from('leadership_positions')
+        .select('photo_path')
+        .eq('id', positionId)
+        .single();
+      if (lookupError) {
+        showStatus(leadershipEditorStatus, `Data pengurus tidak dapat diperiksa: ${lookupError.message}`, true);
+        return;
+      }
+      const { error } = await hmssSupabase.from('leadership_positions').delete().eq('id', positionId);
+      if (error) {
+        showStatus(leadershipEditorStatus, `Data pengurus tidak terhapus: ${error.message}`, true);
+        return;
+      }
+      try {
+        await removePhoto(position.photo_path);
+      } catch (cleanupError) {
+        showStatus(leadershipEditorStatus, `Data terhapus, tetapi foto lama tidak terhapus: ${cleanupError.message}`, true);
+        await loadPositions(periodForm.elements.id.value);
+        return;
+      }
+      await loadPositions(periodForm.elements.id.value);
+      showStatus(leadershipEditorStatus, 'Data pengurus berhasil dihapus.', false);
+    });
+
     document.querySelectorAll('[data-view]').forEach((link) => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
         const view = views[link.dataset.view];
+        if (!view) return;
         document.querySelectorAll('.admin-nav a[data-view]').forEach((item) => item.classList.toggle('active', item.dataset.view === link.dataset.view));
         document.querySelector('#breadcrumb-current').textContent = view[0];
         dashboardView.hidden = link.dataset.view !== 'dashboard';
@@ -102,10 +605,19 @@
           document.querySelector('#view-description').textContent = view[1];
           document.querySelector('#view-heading').textContent = view[2];
           document.querySelector('#view-note').textContent = view[3];
+          genericManager.hidden = link.dataset.view === 'kepengurusan';
+          managementView.querySelector('.demo-banner').hidden = link.dataset.view === 'kepengurusan';
+          leadershipAuth.hidden = link.dataset.view !== 'kepengurusan';
+          leadershipEditor.hidden = true;
+          if (link.dataset.view === 'kepengurusan') openLeadershipManager();
         }
         history.replaceState(null, '', `#${link.dataset.view}`);
       });
     });
+
+    if (window.location.hash === '#kepengurusan') {
+      document.querySelector('[data-view="kepengurusan"]').click();
+    }
   </script>
   <script>
     if ('serviceWorker' in navigator) {
