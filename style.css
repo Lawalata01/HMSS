@@ -92,6 +92,26 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.2vw, 57px); line-height: 1.1; fo
 .quote-credit { color: #c1cbbd; font-size: 8px; font-weight: 700; letter-spacing: .18em; }
 .quote-decoration { position: absolute; right: 11%; top: 27px; color: #ffffff13; font-size: 140px; }
 
+.structure-section { padding-top: 100px; padding-bottom: 105px; }
+.structure-section .section-heading { align-items: end; }
+.structure-intro { max-width: 320px; margin: 0 0 5px; color: #72766d; font-size: 11px; line-height: 1.9; }
+.organization-chart { display: flex; flex-direction: column; align-items: center; }
+.organization-lead, .organization-deputy { width: min(100%, 330px); min-height: 72px; padding: 14px 20px; display: grid; align-content: center; gap: 6px; text-align: center; }
+.organization-lead { color: white; background: var(--green-dark); }
+.organization-lead span, .organization-deputy span, .organization-card > span { color: var(--lime); font-size: 8px; font-weight: 700; letter-spacing: .14em; }
+.organization-lead strong, .organization-deputy strong { font: 700 17px var(--display); }
+.organization-connector { width: 1px; height: 24px; background: #b8c5b9; }
+.organization-deputy { color: var(--ink); background: #e9efe8; border: 1px solid #d5e0d5; }
+.organization-deputy span { color: var(--green); }
+.organization-branches { width: 100%; margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; position: relative; }
+.organization-branches::before { content: ""; position: absolute; top: -16px; left: 16.66%; right: 16.66%; height: 1px; background: #b8c5b9; }
+.organization-card { min-height: 116px; padding: 19px; position: relative; background: var(--card); border: 1px solid #e2e8df; }
+.organization-card::before { content: ""; position: absolute; top: -16px; left: 50%; width: 1px; height: 15px; background: #b8c5b9; }
+.organization-card > span { color: var(--green); }
+.organization-card h3 { margin: 9px 0 6px; font: 700 14px/1.35 var(--display); color: var(--ink); }
+.organization-card p { margin: 0; color: #72766d; font-size: 10px; line-height: 1.65; }
+.structure-note { margin: 18px 0 0; color: #777b71; font-size: 9px; line-height: 1.7; text-align: center; }
+
 .news-section { padding-top: 108px; padding-bottom: 115px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 39px; }
 .section-heading .section-kicker { margin-bottom: 17px; }
@@ -178,9 +198,9 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.2vw, 57px); line-height: 1.1; fo
 }
 @media (max-width: 950px) {
   .site-header { padding: 0 5%; }
-  .site-nav { gap: 15px; }
-  .nav-link { font-size: 10px; }
-  .nav-admin { padding: 10px; }
+  .site-nav { gap: 11px; }
+  .nav-link { font-size: 9px; }
+  .nav-admin { padding: 9px; }
   .hero { padding-left: 6%; padding-right: 6%; grid-template-columns: .92fr 1fr; }
   .hero h1 { font-size: clamp(52px, 7vw, 68px); }
   .hero-art { min-height: 400px; margin-left: 20px; }
@@ -210,6 +230,12 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.2vw, 57px); line-height: 1.1; fo
   .intro-text .lead { font-size: 19px; }
   .values { gap: clamp(20px, 8vw, 45px); }
   .quote-band { min-height: 270px; }
+  .structure-section { padding-top: 76px; padding-bottom: 78px; }
+  .structure-section .section-heading { flex-direction: column; gap: 14px; margin-bottom: 28px; }
+  .structure-intro { max-width: 420px; }
+  .organization-branches { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .organization-branches::before { display: none; }
+  .organization-card::before { display: none; }
   .news-section { padding-top: 77px; padding-bottom: 78px; }
   .section-heading { align-items: start; }
   .section-heading h2 { font-size: 36px; }
@@ -252,6 +278,8 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.2vw, 57px); line-height: 1.1; fo
   .gallery-grid { grid-template-columns: 1fr; }
   .gallery-one { grid-column: auto; }
   .gallery-photo { min-height: 230px; }
+  .organization-branches { grid-template-columns: 1fr; }
+  .organization-card { min-height: 0; }
 }
 
 /* Admin dashboard */
