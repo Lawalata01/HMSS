@@ -256,7 +256,9 @@
 
     document.querySelectorAll('main > section').forEach((section) => {
       const isQuoteForProfile = section.classList.contains('quote-band');
-      section.hidden = section.id !== currentPage && !(isQuoteForProfile && currentPage === 'profil');
+      const isVisible = section.id === currentPage || (isQuoteForProfile && currentPage === 'profil');
+      section.hidden = !isVisible;
+      section.style.display = isVisible ? '' : 'none';
     });
     siteNav.querySelectorAll('[data-page]').forEach((link) => {
       const isCurrentPage = link.dataset.page === currentPage;
