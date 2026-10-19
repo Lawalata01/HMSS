@@ -217,11 +217,37 @@
           <div class="section-kicker light-kicker"><span>06</span> / JADI BAGIAN CERITA</div>
           <h2>Tempatmu<br>ada <em>di sini.</em></h2>
           <p>Punya semangat untuk belajar, bertumbuh, dan berkontribusi? Mari berjalan bersama HMSS.</p>
-          <a class="button button-light" href="index.html?page=kontak">Kenalan dengan kami <span>↗</span></a>
+          <a class="button button-light" href="#form-pendaftaran">Daftar Keanggotaan HMSS <span>↗</span></a>
         </div>
         <div class="join-art" role="img" aria-label="Pemandangan hijau Papua"></div>
         <span class="join-star" aria-hidden="true">✳</span>
       </div>
+      <form class="membership-form" id="form-pendaftaran">
+        <div class="section-kicker"><span>FORMULIR</span> / PENDAFTARAN ANGGOTA</div>
+        <h2>Mulai perjalanan<br><span>bersama HMSS.</span></h2>
+        <p class="membership-form-intro">Isi data berikut. Setelah menekan tombol kirim, WhatsApp akan terbuka dengan pesan pendaftaran yang siap dikirim ke pengurus.</p>
+        <div class="membership-fields">
+          <label>Nama lengkap
+            <input name="nama" type="text" autocomplete="name" required maxlength="100">
+          </label>
+          <label>Asal perguruan tinggi
+            <input name="kampus" type="text" autocomplete="organization" required maxlength="120">
+          </label>
+          <label>Program studi
+            <input name="programStudi" type="text" required maxlength="120">
+          </label>
+          <label>Angkatan
+            <input name="angkatan" type="number" inputmode="numeric" min="2000" max="2100" required>
+          </label>
+          <label>Nomor WhatsApp pendaftar
+            <input name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="08xxxxxxxxxx">
+          </label>
+          <label class="membership-reason">Alasan ingin bergabung
+            <textarea name="alasan" rows="4" maxlength="500" required></textarea>
+          </label>
+        </div>
+        <button class="button button-dark membership-submit" type="submit">Kirim pendaftaran via WhatsApp <span aria-hidden="true">↗</span></button>
+      </form>
     </section>
 
     <section class="contact-section section-pad" id="kontak">
@@ -285,6 +311,27 @@
         menuToggle.setAttribute('aria-expanded', 'false');
         siteNav.classList.remove('is-open');
       });
+    });
+
+    document.querySelector('#form-pendaftaran').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      const message = [
+        'Pendaftaran Keanggotaan HMSS',
+        '',
+        `Nama lengkap: ${formData.get('nama')}`,
+        `Perguruan tinggi: ${formData.get('kampus')}`,
+        `Program studi: ${formData.get('programStudi')}`,
+        `Angkatan: ${formData.get('angkatan')}`,
+        `WhatsApp pendaftar: ${formData.get('whatsapp')}`,
+        `Alasan bergabung: ${formData.get('alasan')}`
+      ].join('\n');
+      const whatsappUrl = `https://wa.me/6282217676455?text=${encodeURIComponent(message)}`;
+      const whatsappLink = document.createElement('a');
+      whatsappLink.href = whatsappUrl;
+      whatsappLink.target = '_blank';
+      whatsappLink.rel = 'noopener noreferrer';
+      whatsappLink.click();
     });
   </script>
 </body>

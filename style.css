@@ -170,6 +170,18 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.2vw, 57px); line-height: 1.1; fo
 .button-light span { color: var(--orange); }
 .join-art { position: absolute; inset: 0 0 0 49%; background: linear-gradient(90deg,var(--green-dark) 0%,transparent 40%), url("sorong-selatan.png") center/cover; opacity: .9; }
 .join-star { position: absolute; z-index: 1; top: 38px; right: 44px; color: var(--lime); font-size: 34px; }
+.membership-form { max-width: 760px; margin: 34px auto 0; padding: clamp(25px, 5vw, 48px); background: var(--card); border: 1px solid var(--line); }
+.membership-form .section-kicker { margin-bottom: 17px; }
+.membership-form h2 { font-size: clamp(32px, 4vw, 44px); }
+.membership-form h2 span { color: var(--green); font-style: italic; font-weight: 500; }
+.membership-form-intro { max-width: 550px; margin: 14px 0 26px; color: #72766d; font-size: 11px; line-height: 1.8; }
+.membership-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+.membership-fields label { display: grid; gap: 7px; color: var(--ink); font-size: 10px; font-weight: 700; }
+.membership-fields input, .membership-fields textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); background: var(--paper); font: 400 12px var(--sans); }
+.membership-fields input:focus, .membership-fields textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.membership-fields textarea { resize: vertical; }
+.membership-reason { grid-column: 1 / -1; }
+.membership-submit { margin-top: 22px; border: 0; cursor: pointer; }
 
 .contact-section { padding-top: 0; padding-bottom: 107px; }
 .contact-section > .section-kicker { margin-bottom: 30px; }
@@ -263,6 +275,10 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.2vw, 57px); line-height: 1.1; fo
   .join-copy { padding: 38px 28px; }
   .join-art { inset: 45% 0 0; background-image: linear-gradient(180deg,var(--green-dark),transparent 45%), url("sorong-selatan.png"); }
   .join-star { top: 24px; right: 26px; }
+  .membership-form { margin-top: 24px; }
+  .membership-fields { grid-template-columns: 1fr; }
+  .membership-reason { grid-column: auto; }
+  .membership-submit { width: 100%; justify-content: center; }
   .contact-section { padding-top: 0; padding-bottom: 76px; }
   .contact-details { padding-top: 5px; }
   .site-footer { padding: 24px 6% 17px; }
