@@ -192,9 +192,6 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.2vw, 57px); line-height: 1.1; fo
 .footer-bottom { display: flex; gap: 24px; align-items: center; padding-top: 14px; border-top: 1px solid #ffffff24; color: #c5d5cc; font-size: 8px; }
 .footer-bottom span { margin-right: auto; }
 .footer-bottom a { color: var(--lime); font-weight: 600; }
-.install-app { padding: 0; border: 0; color: var(--lime); background: transparent; font-size: inherit; font-weight: 600; cursor: pointer; }
-.install-app:hover { color: white; }
-
 @media (min-width: 1440px) {
   .site-header, .hero, .site-footer { padding-left: max(7.1%, calc((100vw - 1260px) / 2)); padding-right: max(7.1%, calc((100vw - 1260px) / 2)); }
   .section-pad { padding-left: max(10.4%, calc((100vw - 1120px) / 2)); padding-right: max(10.4%, calc((100vw - 1120px) / 2)); }
