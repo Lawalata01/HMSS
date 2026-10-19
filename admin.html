@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1b3327">
+  <title>Dashboard Admin — HMSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">H<span>M</span>SS</span>
+        <span class="brand-name">Himpunan Mahasiswa<br><strong>Sorong Selatan</strong></span>
+      </a>
+      <p class="admin-label">MENU UTAMA</p>
+      <nav class="admin-nav" aria-label="Menu dashboard">
+        <a class="active" href="#dashboard" data-view="dashboard"><span>⌂</span>Dashboard</a>
+        <a href="#berita" data-view="berita"><span>▤</span>Kelola Berita</a>
+        <a href="#program" data-view="program"><span>◷</span>Kelola Program Kerja</a>
+        <a href="#galeri" data-view="galeri"><span>▧</span>Kelola Galeri</a>
+        <a href="#anggota" data-view="anggota"><span>♙</span>Kelola Anggota</a>
+        <a href="#pesan" data-view="pesan"><span>✉</span>Kelola Pesan</a>
+        <a href="#pengaturan" data-view="pengaturan"><span>⚙</span>Pengaturan Website</a>
+      </nav>
+      <div class="admin-side-bottom">
+        <nav class="admin-nav"><a href="index.html"><span>↗</span>Lihat Website Publik</a></nav>
+      </div>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-breadcrumb">HMSS Admin <span aria-hidden="true"> / </span> <strong id="breadcrumb-current">Dashboard</strong></div>
+        <div class="admin-user"><span class="admin-avatar">AD</span><span><strong>Admin HMSS</strong><small>Administrator</small></span></div>
+      </header>
+      <div class="admin-content">
+        <section id="dashboard-view">
+          <div class="admin-welcome">
+            <div><div class="section-kicker"><span>RINGKASAN</span> / HMSS</div><h1>Selamat datang, Admin.</h1><p>Berikut gambaran aktivitas website HMSS hari ini.</p></div>
+            <div class="admin-date">SENIN, 18 AGUSTUS 2025</div>
+          </div>
+          <div class="admin-stats">
+            <article class="stat-card"><div class="stat-card-top"><span>Total Berita</span><span class="stat-icon">▤</span></div><div class="stat-number">24</div><div class="stat-foot"><strong>+3</strong> berita bulan ini</div></article>
+            <article class="stat-card"><div class="stat-card-top"><span>Program Aktif</span><span class="stat-icon">◷</span></div><div class="stat-number">06</div><div class="stat-foot">Dari 8 program kerja</div></article>
+            <article class="stat-card"><div class="stat-card-top"><span>Data Anggota</span><span class="stat-icon">♙</span></div><div class="stat-number">128</div><div class="stat-foot"><strong>+12</strong> anggota baru</div></article>
+            <article class="stat-card"><div class="stat-card-top"><span>Pesan Masuk</span><span class="stat-icon">✉</span></div><div class="stat-number">08</div><div class="stat-foot"><strong>3 pesan</strong> belum dibaca</div></article>
+          </div>
+          <div class="admin-panels">
+            <section class="admin-panel">
+              <div class="panel-heading"><h2>Berita terbaru</h2><a href="#berita" data-view="berita">Kelola berita ↗</a></div>
+              <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>JUDUL</th><th>KATEGORI</th><th>TANGGAL</th><th>STATUS</th></tr></thead><tbody>
+                <tr><td class="table-title">Penerimaan anggota baru HMSS 2025 resmi dibuka</td><td>Pengumuman</td><td>12 Agu 2025</td><td><span class="status">Terbit</span></td></tr>
+                <tr><td class="table-title">Ruang Cerita: mendengar dan bertumbuh bersama</td><td>Kegiatan</td><td>28 Jul 2025</td><td><span class="status">Terbit</span></td></tr>
+                <tr><td class="table-title">Catatan perjalanan pengabdian Sorong Selatan</td><td>Cerita HMSS</td><td>10 Jul 2025</td><td><span class="status pending">Konsep</span></td></tr>
+              </tbody></table></div>
+            </section>
+            <section class="admin-panel">
+              <div class="panel-heading"><h2>Aktivitas terbaru</h2><a href="#pesan" data-view="pesan">Lihat pesan ↗</a></div>
+              <div class="activity-list">
+                <div class="activity"><span class="activity-icon">✉</span><p><strong>Pesan baru</strong> dari Maria K.<small>15 menit yang lalu</small></p></div>
+                <div class="activity"><span class="activity-icon">▤</span><p><strong>Berita diperbarui</strong> — Ruang Cerita HMSS<small>2 jam yang lalu</small></p></div>
+                <div class="activity"><span class="activity-icon">♙</span><p><strong>Anggota baru</strong> menunggu verifikasi<small>Kemarin, 16.40 WIT</small></p></div>
+                <div class="activity"><span class="activity-icon">▧</span><p><strong>Galeri kegiatan</strong> ditambahkan<small>12 Agu 2025, 10.15 WIT</small></p></div>
+              </div>
+            </section>
+          </div>
+          <div class="admin-note"><strong>Catatan prototipe:</strong> Tampilan ini adalah rancangan antarmuka; angka, nama, dan aktivitas merupakan data ilustrasi. Pengelolaan data memerlukan backend dan autentikasi sebelum digunakan.</div>
+        </section>
+        <section id="management-view" hidden>
+          <div class="admin-welcome"><div><div class="section-kicker"><span>KELOLA KONTEN</span> / HMSS</div><h1 id="view-title">Kelola Berita</h1><p id="view-description"></p></div></div>
+          <div class="admin-page-message"><h2 id="view-heading"></h2><p id="view-note"></p></div>
+          <div class="admin-note"><strong>Catatan prototipe:</strong> Tampilan ini adalah rancangan antarmuka. Pengelolaan data memerlukan backend dan autentikasi sebelum digunakan.</div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script>
+    const views = {
+      dashboard: ['Dashboard', 'Ringkasan aktivitas website HMSS.', 'Dashboard HMSS', 'Pilih menu di samping untuk melihat area pengelolaan konten.'],
+      berita: ['Kelola Berita', 'Atur informasi dan cerita terbaru untuk website publik.', 'Daftar berita', 'Kelola berita, pengumuman, kategori, dan status publikasi di sini.'],
+      program: ['Kelola Program Kerja', 'Atur program dan agenda kegiatan HMSS.', 'Program kerja', 'Kelola deskripsi program, jadwal kegiatan, dan status pelaksanaan.'],
+      galeri: ['Kelola Galeri', 'Atur foto dan dokumentasi kegiatan organisasi.', 'Galeri kegiatan', 'Kelola dokumentasi foto, keterangan, dan kategori galeri.'],
+      anggota: ['Kelola Anggota', 'Lihat dan perbarui data keanggotaan HMSS.', 'Data anggota', 'Kelola data anggota, status keanggotaan, dan proses verifikasi.'],
+      pesan: ['Kelola Pesan', 'Tinjau pesan dan pertanyaan dari pengunjung website.', 'Kotak pesan', 'Tinjau pesan masuk dan tandai pesan yang sudah ditindaklanjuti.'],
+      pengaturan: ['Pengaturan Website', 'Atur informasi dasar dan tampilan website HMSS.', 'Pengaturan website', 'Kelola profil organisasi, kontak, tautan media sosial, dan informasi website.']
+    };
+    const dashboardView = document.querySelector('#dashboard-view');
+    const managementView = document.querySelector('#management-view');
+    document.querySelectorAll('[data-view]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const view = views[link.dataset.view];
+        document.querySelectorAll('.admin-nav a[data-view]').forEach((item) => item.classList.toggle('active', item.dataset.view === link.dataset.view));
+        document.querySelector('#breadcrumb-current').textContent = view[0];
+        dashboardView.hidden = link.dataset.view !== 'dashboard';
+        managementView.hidden = link.dataset.view === 'dashboard';
+        if (link.dataset.view !== 'dashboard') {
+          document.querySelector('#view-title').textContent = view[0];
+          document.querySelector('#view-description').textContent = view[1];
+          document.querySelector('#view-heading').textContent = view[2];
+          document.querySelector('#view-note').textContent = view[3];
+        }
+        history.replaceState(null, '', `#${link.dataset.view}`);
+      });
+    });
+  </script>
+</body>
+</html>
