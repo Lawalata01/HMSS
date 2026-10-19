@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1b3327">
+  <meta name="theme-color" content="#123D32">
   <title>Dashboard Admin — HMSS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,13 +34,14 @@
     <main class="admin-main">
       <header class="admin-topbar">
         <div class="admin-breadcrumb">HMSS Admin <span aria-hidden="true"> / </span> <strong id="breadcrumb-current">Dashboard</strong></div>
-        <div class="admin-user"><span class="admin-avatar">AD</span><span><strong>Admin HMSS</strong><small>Administrator</small></span></div>
+        <div class="admin-user"><span class="admin-avatar">D</span><span><strong>Mode demo</strong><small>Login belum tersedia</small></span></div>
       </header>
       <div class="admin-content">
         <section id="dashboard-view">
+          <div class="demo-banner"><span class="demo-badge">DEMO</span><p><strong>Pratinjau tampilan saja.</strong> Dashboard ini belum memiliki login atau backend. Semua angka, aktivitas, dan data anggota di bawah adalah contoh, bukan data HMSS sebenarnya.</p></div>
           <div class="admin-welcome">
-            <div><div class="section-kicker"><span>RINGKASAN</span> / HMSS</div><h1>Selamat datang, Admin.</h1><p>Berikut gambaran aktivitas website HMSS hari ini.</p></div>
-            <div class="admin-date">SENIN, 18 AGUSTUS 2025</div>
+            <div><div class="section-kicker"><span>RINGKASAN DEMO</span> / HMSS</div><h1>Pratinjau dashboard.</h1><p>Contoh tampilan pengelolaan website HMSS.</p></div>
+            <div class="admin-date">DATA CONTOH · 18 AGU 2025</div>
           </div>
           <div class="admin-stats">
             <article class="stat-card"><div class="stat-card-top"><span>Total Berita</span><span class="stat-icon">▤</span></div><div class="stat-number">24</div><div class="stat-foot"><strong>+3</strong> berita bulan ini</div></article>
@@ -67,19 +68,18 @@
               </div>
             </section>
           </div>
-          <div class="admin-note"><strong>Catatan prototipe:</strong> Tampilan ini adalah rancangan antarmuka; angka, nama, dan aktivitas merupakan data ilustrasi. Pengelolaan data memerlukan backend dan autentikasi sebelum digunakan.</div>
         </section>
         <section id="management-view" hidden>
+          <div class="demo-banner"><span class="demo-badge">DEMO</span><p><strong>Menu ini hanya pratinjau.</strong> Belum terhubung ke database atau sistem login. Tidak ada data yang bisa disimpan atau diubah dari halaman ini.</p></div>
           <div class="admin-welcome"><div><div class="section-kicker"><span>KELOLA KONTEN</span> / HMSS</div><h1 id="view-title">Kelola Berita</h1><p id="view-description"></p></div></div>
           <div class="admin-page-message"><h2 id="view-heading"></h2><p id="view-note"></p></div>
-          <div class="admin-note"><strong>Catatan prototipe:</strong> Tampilan ini adalah rancangan antarmuka. Pengelolaan data memerlukan backend dan autentikasi sebelum digunakan.</div>
         </section>
       </div>
     </main>
   </div>
   <script>
     const views = {
-      dashboard: ['Dashboard', 'Ringkasan aktivitas website HMSS.', 'Dashboard HMSS', 'Pilih menu di samping untuk melihat area pengelolaan konten.'],
+      dashboard: ['Dashboard', 'Ringkasan contoh dashboard HMSS.', 'Dashboard HMSS', 'Pratinjau antarmuka saja. Tidak ada data yang terhubung ke sistem pengelolaan.'],
       berita: ['Kelola Berita', 'Atur informasi dan cerita terbaru untuk website publik.', 'Daftar berita', 'Kelola berita, pengumuman, kategori, dan status publikasi di sini.'],
       program: ['Kelola Program Kerja', 'Atur program dan agenda kegiatan HMSS.', 'Program kerja', 'Kelola deskripsi program, jadwal kegiatan, dan status pelaksanaan.'],
       galeri: ['Kelola Galeri', 'Atur foto dan dokumentasi kegiatan organisasi.', 'Galeri kegiatan', 'Kelola dokumentasi foto, keterangan, dan kategori galeri.'],
